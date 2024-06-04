@@ -1,1 +1,1 @@
-# advertising-binorix ыавыв
+# advertising-binorix
