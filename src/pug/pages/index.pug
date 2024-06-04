@@ -1,0 +1,53 @@
+extends ../layout/base
+
+block variables
+    //подключаем основу для страницы и выводим в нее данные
+    - var title='Binorix';
+    - var description='Binorix';
+    - var pageClass='index-page';
+
+block content
+
+    section(class="learn")
+        div(class="learn__container")
+            h1 What You'll Learn
+            div(class="learn__items")
+                div(class="learn__group")
+                    img(src='/assets/img/learn/picOne.svg' alt="picture")
+                    div(class="learn__item")
+                        h2 Proven Trading Strategies
+                        p(class="b1big") Discover the techniques used by successful traders to consistently make profit.Uncover the mechanics of day trading, swing trading, and other strategic approaches. Designed for traders at any skill level, it offers essential information to refine your strategy selection and implementation for market success.
+
+                div(class="learn__group")
+                    img(src='/assets/img/learn/picTwo.svg' alt="picture")
+                    div(class="learn__item")
+                        h2 Risk Management:
+                        p(class="b1big") Learn how to protect your capital and minimise losses. Successful trading is not just about making money; it's equally about protecting and preserving your capital. Learn how to minimize trading losses and protect your trading capital through effective risk management techniques.
+                div(class="learn__group")
+                    img(src='/assets/img/learn/picThree.svg' alt="picture")
+                    div(class="learn__item")
+                        h2 Market Analysis:
+                        p(class="b1big") Master the art of analysing market trends and making informed trading decisions that will maximise your profits in the Forex Market. It’s not only about checking the charts but also supporting it with fundamental analysis.
+
+    section(class="call")
+        div(class="call__container")
+            h1 What You’ll get with this Coaching Call
+            div(class="call__items")
+                div(class="call__group")
+                    img(src='/assets/img/call/picOne.svg' alt="picture")
+                    h3 Personalized  ance:
+                    p(class="b1") Schedule a one-on-one session with one of our expert traders. This is your opportunity to get tailored advice, ask specific questions, and receive actionable insights that can immediately improve your trading performance.
+                div(class="call__group")
+                    img(src='/assets/img/call/picTwo.svg' alt="picture")
+                    h3 Expert Analysis:
+                    p(class="b1") During the call, our expert will analyze your current trading strategies, identify areas for improvement, and provide you with a customized plan to enhance your trading results.
+                div(class="call__group")
+                    img(src='/assets/img/call/picThree.svg' alt="picture")
+                    h3 Goal Setting:
+                    p(class="b1") Work with our expert to set realistic and achievable trading goals. Learn how to create a roadmap to reach your financial targets and stay on track.
+    div(class="group")
+        span
+        button(class='button')
+            div(class='b1' style="font-weight: 700") Get it Now for FREE
+        span
+block script

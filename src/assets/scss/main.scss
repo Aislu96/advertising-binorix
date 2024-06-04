@@ -1,0 +1,371 @@
+@import "utils/libs";
+@import "utils/vars";
+@import "utils/mixins";
+@import "utils/fonts";
+@import "utils/_reset";
+@import "utils/_normalize";
+@import "utils/_functions";
+@import "smart-grid";
+
+.index-page {
+  color: $color;
+  font-family: "Urbanist", sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  min-width: 320px;
+  @include flex-column;
+  box-sizing: border-box;
+  position: relative;
+  max-width: 2208px;
+  overflow-x: hidden;
+}
+
+
+/* button */
+
+.group {
+  @include flex-row;
+  align-items: center;
+  justify-content: center;
+  gap: 52px;
+
+  span {
+    max-width: 100%; /* Устанавливает максимальную ширину изображения как 100% от родительского элемента */
+    width: 295px;
+    height: 29.46px;
+    background-image: url("/assets/img/button/Arrow.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  & span:nth-child(3) {
+    transform: scaleX(-1)
+  }
+}
+
+.button {
+  background-color: $colorTwo;
+  padding: 16px 24px;
+  border-radius: 40px;
+  height: 70px;
+  width: 563px;
+  @include flex-center;
+}
+
+@media screen and (max-width: 1200px) {
+  .button {
+    width: 40%;
+  }
+  .group {
+    gap: 10px;
+  }
+}
+
+
+@media screen and (max-width: 950px) {
+  .group {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .button {
+    width: 70%;
+    height: 45px;
+  }
+}
+
+/* /button */
+
+
+/* container */
+.container {
+  padding: 62px 9%;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* /container */
+
+/* size */
+
+h1 {
+  text-align: center;
+  font-size: calc(35px + 35 * (100vw - 320px) / 1888);
+  line-height: clamp(42px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 84px);
+  font-weight: $fontWeightBold;
+  color: $colorTwo;
+}
+
+h2 {
+  font-size: calc(28px + 28 * (100vw - 320px) / 1888);
+  line-height: clamp(33.6px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 67.2px);
+  font-weight: $fontWeightSemiBold;
+}
+
+h3 {
+  font-size: calc(22px + 22 * (100vw - 320px) / 1888);
+  line-height: clamp(26.4px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 52.8px);
+  font-weight: $fontWeightSemiBold;
+}
+
+.b1big {
+  font-size: calc(15px + 20 * (100vw - 320px) / 1888);
+  line-height: clamp(24px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 48px);
+  font-weight: $fontWeightSemiBold;
+}
+
+.b1 {
+  font-size: calc(16px + 16 * (100vw - 320px) / 1888);
+  line-height: clamp(19.2px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 38.4px);
+  font-weight: $fontWeightMedium;
+}
+
+p {
+  font-size: calc(12px + 12 * (100vw - 320px) / 1888);
+  line-height: clamp(14.4px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 28.8px);
+  font-weight: $fontWeightMedium;
+}
+
+
+/* /size */
+
+
+/* learn */
+.learn {
+  &__container {
+    padding: 40px 10%;
+    @include flex-column;
+    gap: 96px;
+  }
+
+  &__items {
+    @include flex-column;
+    gap: 96px;
+  }
+
+  &__group {
+    border-radius: 16px;
+    box-shadow: 5px 3px 20px 0px rgba(221, 222, 215, 1);
+    @include flex-row;
+    gap: 100px;
+    padding: 44px;
+    &:nth-child(2) {
+      flex-direction: row-reverse !important;
+    }
+  }
+
+  img {
+    object-fit: contain;
+    width: 480px;
+  }
+
+  &__item {
+    @include flex-column;
+    gap: 24px;
+  }
+  p {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .learn {
+    img {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .learn {
+    &__container {
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .learn {
+    &__container {
+      gap: 56px;
+    }
+    &__group {
+      @include flex-column;
+      gap: 50px;
+      &:nth-child(2) {
+        flex-direction: column !important;
+      }
+    }
+    &__items {
+      gap: 56px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .learn {
+    &__container {
+      padding-right: 20px;
+      padding-left: 20px;
+      gap: 26px;
+    }
+    &__group {
+      padding: 20px;
+      gap: 20px;
+    }
+    &__items {
+      gap: 26px;
+    }
+  }
+}
+/* /learn */
+
+/*call */
+.call {
+  margin: 0 auto;
+  background: $color;
+
+  &__container {
+    padding: 100px 9%;
+    gap: 40px;
+    @include flex-column;
+  }
+
+  &__items {
+    margin: 0 auto;
+    @include flex-row;
+    gap: 62px;
+  }
+
+  &__group {
+    width: 40%;
+    background-color: $colorThree;
+    @include flex-column;
+    gap: 32px;
+    padding: 32px;
+    border-radius: 32px;
+  }
+
+  img {
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .call {
+    &__container {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    &__items {
+      gap: 30px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .call {
+    &__items {
+      @include flex-column;
+      align-items: center;
+    }
+
+    &__group {
+      width: 60%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+  .call {
+    &__group {
+      width: 320px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .call {
+    &__container {
+      padding: 50px 16px;
+    }
+
+
+    &__group {
+      width: 280px;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    img {
+      height: 140px;
+    }
+  }
+}
+
+/* /call */
+
+/* footer */
+.footer {
+  background: #DAD9DD;
+  border-radius: 100px 100px 0 0;
+
+  h2 {
+    margin-bottom: 76px;
+  }
+
+  &__group {
+    @include flex-column;
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer {
+    border-radius: 75px 75px 0 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    border-radius: 50px 50px 0 0;
+
+    h2 {
+      margin-bottom: 38px;
+    }
+  }
+}
+
+/* /footer */
