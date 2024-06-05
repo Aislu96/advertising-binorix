@@ -35,7 +35,7 @@
     height: 29.46px;
     background-image: url("/assets/img/button/Arrow.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 
   & span:nth-child(3) {
@@ -54,7 +54,7 @@
 
 @media screen and (max-width: 1200px) {
   .button {
-    width: 40%;
+    width: 70%;
   }
   .group {
     gap: 10px;
@@ -62,18 +62,17 @@
 }
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 510px) {
+  .button {
+    width: 120%;
+    height: 45px;
+  }
+
   .group {
     span {
-      display: none;
+      margin-top: 20px;
+      width: 180px;
     }
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .button {
-    width: 70%;
-    height: 45px;
   }
 }
 
@@ -111,8 +110,13 @@
 
 /* size */
 
+
+.b2 {
+  font-size: calc(48px + 48 * (100vw - 320px) / 1888);
+  line-height: clamp(57.5px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
+  font-weight: $fontWeightBold;
+}
 h1 {
-  text-align: center;
   font-size: calc(35px + 35 * (100vw - 320px) / 1888);
   line-height: clamp(42px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 84px);
   font-weight: $fontWeightBold;
@@ -152,6 +156,119 @@ p {
 
 /* /size */
 
+
+/*banner */
+.banner {
+  &__container {
+    position: relative;
+    padding: 64px 9%;
+    @include flex-column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    color: $color;
+    text-align: center;
+  }
+  span {
+    background-color: $colorThree;
+    border-radius: 50px;
+  }
+  p {
+    text-align: center;
+    width: 49%;
+    margin-bottom: 32px;
+  }
+  &__fon {
+    position: absolute;
+    background-color: $colorFour;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 839px;
+    z-index: -1;
+  }
+}
+/* /banner */
+
+
+
+/* video */
+.video {
+  height: 549px;
+  width: 62%;
+  &__fon {
+    background-color: $color;
+    border-radius: 50px;
+    height: 100%;
+    width: 100%;
+  }
+}
+/* /video */
+
+/* stud */
+.stud {
+  &__container {
+    padding: 80px 10%;
+    @include flex-column;
+    gap: 64px;
+    h1 {
+      color: $color;
+    }
+  }
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 46px;
+  }
+  img {
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .stud {
+    &__container {
+      gap: 44px;
+    }
+    &__group {
+      gap: 26px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .stud {
+    &__container {
+      padding: 40px 50px;
+      gap: 24px;
+    }
+    &__group {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .stud {
+    &__container {
+      padding-right: 20px;
+      padding-left: 20px;
+      gap: 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .stud {
+    h1 {
+      font-size: 30px;
+    }
+  }
+}
+/* /stud */
 
 /* learn */
 .learn {
@@ -255,6 +372,9 @@ p {
     padding: 100px 9%;
     gap: 40px;
     @include flex-column;
+    h1 {
+      text-align: center;
+    }
   }
 
   &__items {
