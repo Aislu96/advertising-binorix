@@ -30,7 +30,7 @@
   gap: 52px;
 
   span {
-    max-width: 100%; /* Устанавливает максимальную ширину изображения как 100% от родительского элемента */
+    max-width: 100%;
     width: 295px;
     height: 29.46px;
     background-image: url("/assets/img/button/Arrow.svg");
@@ -50,6 +50,11 @@
   height: 70px;
   width: 563px;
   @include flex-center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -112,10 +117,11 @@
 
 
 .b2 {
-  font-size: calc(48px + 48 * (100vw - 320px) / 1888);
-  line-height: clamp(57.5px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
+  font-size: calc(35px + 61 * (100vw - 320px) / 1888);
+  line-height: clamp(35px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
   font-weight: $fontWeightBold;
 }
+
 h1 {
   font-size: calc(35px + 35 * (100vw - 320px) / 1888);
   line-height: clamp(42px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 84px);
@@ -159,6 +165,8 @@ p {
 
 /*banner */
 .banner {
+  overflow: hidden;
+
   &__container {
     position: relative;
     padding: 64px 9%;
@@ -167,44 +175,137 @@ p {
     justify-content: center;
     align-items: center;
   }
+
   h1 {
     color: $color;
     text-align: center;
   }
+
   span {
     background-color: $colorThree;
     border-radius: 50px;
   }
+
   p {
     text-align: center;
     width: 49%;
     margin-bottom: 32px;
   }
+
   &__fon {
     position: absolute;
     background-color: $colorFour;
     top: 0;
     left: 0;
     width: 100%;
-    height: 839px;
+    height: 60%;
     z-index: -1;
   }
 }
-/* /banner */
 
+
+@media screen and (max-width: 900px) {
+  .banner {
+    &__fon {
+      height: 55%;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .banner {
+    &__container {
+      padding: 34px 20px;
+    }
+
+    p {
+      width: 90%;
+    }
+  }
+}
+
+/* /banner */
 
 
 /* video */
 .video {
   height: 549px;
   width: 62%;
+
   &__fon {
+    position: relative;
     background-color: $color;
     border-radius: 50px;
     height: 100%;
     width: 100%;
   }
+
+  &__button {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    background-image: url("/assets/img/banner/Vector.svg");
+    background-color: transparent;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+  }
 }
+
+@media screen and (max-width: 1600px) {
+  .video {
+    width: 80%;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .video {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 900px) {
+  .video {
+    height: 400px;
+
+    &__fon {
+      border-radius: 30px;
+    }
+
+    &__button {
+      top: 40%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .video {
+    height: 300px;
+
+    &__button {
+      left: 42%;
+      top: 43%;
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .video {
+    height: 200px;
+
+    &__button {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
 /* /video */
 
 /* stud */
@@ -213,15 +314,18 @@ p {
     padding: 80px 10%;
     @include flex-column;
     gap: 64px;
+
     h1 {
       color: $color;
     }
   }
+
   &__group {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 46px;
   }
+
   img {
     object-fit: contain;
   }
@@ -232,6 +336,7 @@ p {
     &__container {
       gap: 44px;
     }
+
     &__group {
       gap: 26px;
     }
@@ -244,6 +349,7 @@ p {
       padding: 40px 50px;
       gap: 24px;
     }
+
     &__group {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
@@ -268,6 +374,7 @@ p {
     }
   }
 }
+
 /* /stud */
 
 /* learn */
@@ -289,7 +396,8 @@ p {
     @include flex-row;
     gap: 100px;
     padding: 44px;
-    &:nth-child(2) {
+
+    &:nth-child(2n) {
       flex-direction: row-reverse !important;
     }
   }
@@ -303,6 +411,7 @@ p {
     @include flex-column;
     gap: 24px;
   }
+
   p {
     width: 100%;
   }
@@ -331,13 +440,16 @@ p {
     &__container {
       gap: 56px;
     }
+
     &__group {
       @include flex-column;
       gap: 50px;
+
       &:nth-child(2) {
         flex-direction: column !important;
       }
     }
+
     &__items {
       gap: 56px;
     }
@@ -352,15 +464,18 @@ p {
       padding-left: 20px;
       gap: 26px;
     }
+
     &__group {
       padding: 20px;
       gap: 20px;
     }
+
     &__items {
       gap: 26px;
     }
   }
 }
+
 /* /learn */
 
 /*call */
@@ -372,6 +487,7 @@ p {
     padding: 100px 9%;
     gap: 40px;
     @include flex-column;
+
     h1 {
       text-align: center;
     }
@@ -489,3 +605,51 @@ p {
 }
 
 /* /footer */
+
+
+/* time */
+.time {
+  &__container {
+    padding: 84px 11% 120px;
+    @include flex-row;
+    gap: 74px;
+  }
+
+  &__img {
+    position: relative;
+    z-index: 1;
+    width: 666px;
+    height: 994px;
+
+    img {
+      object-fit: contain;
+    }
+
+  }
+
+  &__block {
+    width: 50%;
+
+    h1 {
+      margin-bottom: 23px;
+    }
+
+    p {
+      margin-bottom: 79px;
+    }
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .time {
+    &__img-one {
+      position: absolute;
+      top: 80px !important;
+      right: 40px !important;
+      z-index: 2 !important;
+    }
+  }
+}
+
+
+/* /time */
