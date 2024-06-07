@@ -29,6 +29,11 @@
   justify-content: center;
   gap: 52px;
 
+  &__container {
+    padding: 40px 9%;
+    background-color: $colorThree;
+  }
+
   span {
     max-width: 100%;
     width: 295px;
@@ -63,6 +68,12 @@
   }
   .group {
     gap: 10px;
+
+    &__container {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
   }
 }
 
@@ -71,12 +82,20 @@
   .button {
     width: 120%;
     height: 45px;
+
+    &__time {
+      width: 70%;
+    }
   }
 
   .group {
     span {
       margin-top: 20px;
       width: 180px;
+    }
+    &__container {
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 }
@@ -153,6 +172,12 @@ h3 {
   font-weight: $fontWeightMedium;
 }
 
+.s1 {
+  font-weight: $fontWeightMedium;
+  font-size: calc(40px + 60 * (100vw - 320px) / 1888);
+  line-height: clamp(40px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 120px);
+}
+
 p {
   font-size: calc(12px + 12 * (100vw - 320px) / 1888);
   line-height: clamp(14.4px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 28.8px);
@@ -162,6 +187,134 @@ p {
 
 /* /size */
 
+
+/* header */
+.header {
+  &__container {
+    background-color: $color;
+    color: $colorThree;
+    padding: 38px 14% 30px;
+    @include flex-row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__group {
+    align-items: center;
+    @include flex-row;
+    gap: 24px;
+
+    span:nth-child(2) {
+      text-transform: uppercase;
+      padding: 10px;
+      border: 1px solid $colorFive;
+      background-color: $colorSix;
+    }
+  }
+
+  h4 {
+    color: $colorTwo;
+  }
+
+  &__time {
+    @include flex-row;
+    align-items: center;
+    gap: 16px;
+
+    span {
+      @include flex-center;
+      width: 44px;
+      height: 58px;
+      border: 1px solid $colorFive;
+      background-color: $colorSix;
+    }
+
+    div {
+      @include flex-row;
+      gap: 6px;
+    }
+  }
+
+  &__block {
+    @include flex-row;
+    gap: 24px;
+    align-items: center;
+    @include flex-row;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .header {
+    &__container {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1256px) {
+  .header {
+    &__container {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .header {
+    &__container {
+      @include flex-column;
+      gap: 20px;
+    }
+
+    &__time {
+      span {
+        width: 35px;
+        height: 48px;
+      }
+
+      div {
+        @include flex-row;
+        gap: 6px;
+      }
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .header {
+    &__container {
+      padding: 25px 16px;
+    }
+
+    &__time {
+      span {
+        width: 35px;
+        height: 48px;
+      }
+
+      div {
+        @include flex-row;
+        gap: 6px;
+      }
+    }
+
+    &__group {
+      width: 100%;
+      justify-content: space-around;
+      gap: 0;
+    }
+  }
+}
+
+/*/header */
 
 /*banner */
 .banner {
@@ -287,7 +440,7 @@ p {
 
     &__button {
       left: 42%;
-      top: 43%;
+      top: 45%;
       width: 80px;
       height: 80px;
     }
@@ -445,7 +598,7 @@ p {
       @include flex-column;
       gap: 50px;
 
-      &:nth-child(2) {
+      &:nth-child(2n) {
         flex-direction: column !important;
       }
     }
@@ -616,15 +769,11 @@ p {
   }
 
   &__img {
-    position: relative;
-    z-index: 1;
-    width: 666px;
-    height: 994px;
-
     img {
       object-fit: contain;
+      width: 100%;
+      height: 100%;
     }
-
   }
 
   &__block {
@@ -638,18 +787,175 @@ p {
       margin-bottom: 79px;
     }
   }
+
+  &__group {
+    @include flex-row;
+    gap: 16px;
+    margin-bottom: 79px;
+
+    span {
+      background-color: $color;
+      color: $colorTwo;
+      width: 130px;
+      height: 171px;
+      @include flex-center;
+    }
+
+    div {
+      @include flex-row;
+      gap: 8px;
+    }
+  }
 }
 
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 1300px) {
   .time {
-    &__img-one {
-      position: absolute;
-      top: 80px !important;
-      right: 40px !important;
-      z-index: 2 !important;
+    &__container {
+      padding: 50px;
+      gap: 50px;
+    }
+
+    &__block {
+      width: 80%;
+
+      p {
+        margin-bottom: 49px;
+      }
+    }
+
+    &__group {
+      margin-bottom: 49px;
+
+      span {
+        width: 100px;
+        height: 120px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .time {
+    &__container {
+      gap: 30px;
+    }
+
+    &__group {
+      margin-bottom: 29px;
+
+      span {
+        width: 80px;
+        height: 90px;
+      }
+    }
+
+    &__block {
+      width: 60%;
+
+      p {
+        margin-bottom: 29px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 813px) {
+  .time {
+    &__container {
+      @include flex-column;
+    }
+
+    &__block {
+      width: 100%;
+    }
+
+    &__img {
+      text-align: center;
+
+      img {
+        width: 80%;
+        height: auto;
+      }
+    }
+
+    &__group {
+      span {
+        width: 60px;
+        height: 70px;
+      }
     }
   }
 }
 
 
+@media screen and (max-width: 500px) {
+  .time {
+    &__container {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    &__group {
+      span {
+        width: 55px;
+        height: 65px;
+      }
+    }
+
+    &__img {
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
 /* /time */
+
+
+/* questions */
+.questions {
+  &__container {
+    padding: 138px 9.5%;
+    @include flex-column;
+    gap: 56px;
+  }
+  h1 {
+    color: $color;
+  }
+  &__blocks {
+    @include flex-column;
+  }
+  &__block {
+    @include flex-column;
+  }
+  &__group {
+    @include flex-row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px;
+    border-bottom: 1px solid $colorSeven;
+  }
+  &__arrow {
+    padding: 13.5px 15.5px;
+    width: 56px;
+    height: 30px;
+    @include flex-center;
+    span {
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 13px;
+      width: 26px;
+      background-image: url("/assets/img/arrowUp.svg");
+    }
+  }
+  &__body {
+    background-color: $colorEight;
+    border-bottom: 1px solid $colorSeven;
+    @include flex-row;
+    gap: 44px;
+    padding: 52px 26px 52px 16px;
+  }
+}
+/* /questions */
