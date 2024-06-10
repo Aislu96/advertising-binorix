@@ -64,8 +64,8 @@ module.exports = {
         options: {
           name: "[name].[ext]"
         }
-      }, {
-        test: /\.scss$/,
+      },
+      { test: /\.scss$/,
         use: [
           "style-loader",
           MiniCssExtractPlugin.loader,
@@ -80,8 +80,8 @@ module.exports = {
             options: {sourceMap: true}
           }
         ]
-      }, {
-        test: /\.css$/,
+      },
+      {test: /\.css$/,
         use: [
           "style-loader",
           MiniCssExtractPlugin.loader,
@@ -93,7 +93,8 @@ module.exports = {
             options: {sourceMap: true, config: {path: "./postcss.config.js"}}
           }
         ]
-      }]
+      },
+    ]
   },
   resolve: {
     alias: {
