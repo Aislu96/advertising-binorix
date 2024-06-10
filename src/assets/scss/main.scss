@@ -6,6 +6,7 @@
 @import "utils/_normalize";
 @import "utils/_functions";
 @import "smart-grid";
+@import "utils/telephone";
 
 .index-page {
   color: $color;
@@ -787,13 +788,13 @@ p {
 
 @media screen and (max-width: 900px) {
   .footer {
-    border-radius: 75px 75px 0 0;
+    border-radius: 50px 50px 0 0;
   }
 }
 
 @media screen and (max-width: 500px) {
   .footer {
-    border-radius: 50px 50px 0 0;
+    border-radius: 25px 25px 0 0;
 
     h2 {
       margin-bottom: 38px;
@@ -1215,4 +1216,20 @@ input::placeholder {
 [type="checkbox"] {
   width: 26px;
   height: 26px;
+}
+
+
+@media screen and (max-width: 1200px){
+  [type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+@media screen and (max-width: 600px){
+  [type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
 }
