@@ -20,6 +20,9 @@
   overflow-x: hidden;
 }
 
+.active {
+  display: flex !important;
+}
 
 /* button */
 
@@ -35,7 +38,6 @@
   }
 
   span {
-    max-width: 100%;
     width: 295px;
     height: 29.46px;
     background-image: url("/assets/img/button/Arrow.svg");
@@ -57,8 +59,7 @@
   @include flex-center;
 
   &:hover {
-    cursor: pointer;
-    opacity: 0.8;
+    @include hover;
   }
 }
 
@@ -69,6 +70,10 @@
   .group {
     gap: 10px;
 
+    span {
+      width: 180px;
+    }
+
     &__container {
       padding-left: 50px;
       padding-right: 50px;
@@ -78,7 +83,7 @@
 }
 
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 629px) {
   .button {
     width: 120%;
     height: 45px;
@@ -91,11 +96,21 @@
   .group {
     span {
       margin-top: 20px;
-      width: 180px;
+      width: 100px;
     }
+
     &__container {
       padding-left: 16px;
       padding-right: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .group {
+    span {
+      margin-top: 20px;
+      width: 80px;
     }
   }
 }
@@ -135,6 +150,12 @@
 /* size */
 
 
+.b1 {
+  font-size: calc(16px + 16 * (100vw - 320px) / 1888);
+  line-height: clamp(19.2px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 38.4px);
+  font-weight: $fontWeightMedium;
+}
+
 .b2 {
   font-size: calc(35px + 61 * (100vw - 320px) / 1888);
   line-height: clamp(35px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
@@ -166,12 +187,6 @@ h3 {
   font-weight: $fontWeightSemiBold;
 }
 
-.b1 {
-  font-size: calc(16px + 16 * (100vw - 320px) / 1888);
-  line-height: clamp(19.2px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 38.4px);
-  font-weight: $fontWeightMedium;
-}
-
 .s1 {
   font-weight: $fontWeightMedium;
   font-size: calc(40px + 60 * (100vw - 320px) / 1888);
@@ -181,6 +196,12 @@ h3 {
 p {
   font-size: calc(12px + 12 * (100vw - 320px) / 1888);
   line-height: clamp(14.4px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 28.8px);
+  font-weight: $fontWeightMedium;
+}
+
+.p2 {
+  font-size: calc(8px + 12 * (100vw - 320px) / 1888);
+  line-height: clamp(8px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 20px);
   font-weight: $fontWeightMedium;
 }
 
@@ -334,15 +355,9 @@ p {
     text-align: center;
   }
 
-  span {
-    background-color: $colorThree;
-    border-radius: 50px;
-  }
-
   p {
     text-align: center;
     width: 49%;
-    margin-bottom: 32px;
   }
 
   &__fon {
@@ -382,40 +397,74 @@ p {
 
 /* video */
 .video {
+  position: relative;
   height: 549px;
-  width: 62%;
+  width: 100%;
 
   &__fon {
-    position: relative;
+    display: none;
     background-color: $color;
     border-radius: 50px;
     height: 100%;
     width: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__play {
+    display: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
   }
 
   &__button {
     position: absolute;
-    left: 45%;
-    top: 45%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-image: url("/assets/img/banner/Vector.svg");
     background-color: transparent;
     border-radius: 50px;
     width: 100px;
     height: 100px;
     background-size: cover;
+
+    &:hover {
+      @include hover;
+    }
   }
-}
 
-@media screen and (max-width: 1600px) {
-  .video {
-    width: 80%;
+  &__cross-icon {
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -36px;
+    top: -36px;
+
+    &:hover {
+      @include hover;
+    }
   }
-}
 
-
-@media screen and (max-width: 1200px) {
-  .video {
+  &__line1, &__line2 {
+    position: absolute;
     width: 100%;
+    height: 3px;
+    background-color: $color;
+    top: 50%;
+    transform-origin: center;
+  }
+
+  &__line1 {
+    transform: rotate(45deg);
+  }
+
+  &__line2 {
+    transform: rotate(-45deg);
   }
 }
 
@@ -428,9 +477,6 @@ p {
       border-radius: 30px;
     }
 
-    &__button {
-      top: 40%;
-    }
   }
 }
 
@@ -439,8 +485,6 @@ p {
     height: 300px;
 
     &__button {
-      left: 42%;
-      top: 45%;
       width: 80px;
       height: 80px;
     }
@@ -781,6 +825,7 @@ p {
 
     h1 {
       margin-bottom: 23px;
+      color: $color;
     }
 
     p {
@@ -903,7 +948,6 @@ p {
     }
 
     &__img {
-
       img {
         width: 100%;
       }
@@ -921,41 +965,254 @@ p {
     @include flex-column;
     gap: 56px;
   }
+
   h1 {
     color: $color;
   }
+
   &__blocks {
     @include flex-column;
   }
+
   &__block {
     @include flex-column;
   }
+
   &__group {
     @include flex-row;
     align-items: center;
     justify-content: space-between;
     padding: 26px;
     border-bottom: 1px solid $colorSeven;
+
+    &:hover {
+      @include hover;
+    }
   }
+
   &__arrow {
     padding: 13.5px 15.5px;
-    width: 56px;
-    height: 30px;
     @include flex-center;
+
     span {
       background-repeat: no-repeat;
       background-size: contain;
       height: 13px;
       width: 26px;
-      background-image: url("/assets/img/arrowUp.svg");
+      background-image: url("/assets/img/questions/arrowUp.svg");
     }
   }
+
   &__body {
+    display: none;
+    flex-direction: row;
     background-color: $colorEight;
     border-bottom: 1px solid $colorSeven;
-    @include flex-row;
+    align-items: center;
     gap: 44px;
     padding: 52px 26px 52px 16px;
   }
+
+  &__img {
+    img {
+      height: auto;
+      object-fit: cover;
+    }
+  }
 }
+
+
+@media screen and (max-width: 900px) {
+  .questions {
+    &__container {
+      padding: 100px 50px;
+      gap: 36px;
+    }
+
+    &__group {
+      padding: 20px;
+    }
+
+    &__arrow {
+      span {
+        height: 10px;
+        width: 20px;
+      }
+    }
+
+    &__body {
+      gap: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .questions {
+    &__container {
+      padding: 50px 16px;
+      gap: 20px;
+    }
+
+    &__arrow {
+      span {
+        height: 8px;
+        width: 15px;
+      }
+    }
+  }
+}
+
 /* /questions */
+
+
+/* about-us */
+.about-us {
+  &__container {
+    background-color: $color;
+    padding: 40px 10% 182px;
+    @include flex-column;
+    gap: 10px;
+  }
+
+  h1 {
+    color: $colorThree;
+  }
+
+  &__block {
+    @include flex-row;
+    gap: 147px;
+  }
+
+  &__img {
+    img {
+      border-radius: 20px;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    @include flex-column;
+    gap: 39px;
+    padding: 140px 64px;
+    background-color: $colorThree;
+    width: 70%;
+    border-radius: 20px;
+  }
+
+  &__item {
+    @include flex-column;
+    gap: 20px;
+    width: 100%;
+
+    input {
+      padding: 10px;
+      border-bottom: 1px solid $colorNine;
+    }
+  }
+
+  &__checkbox {
+    align-items: center;
+    margin-top: 41px;
+    margin-bottom: 41px;
+    @include flex-row;
+    gap: 39px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 1680px) {
+  .about-us {
+    &__block {
+      gap: 100px;
+    }
+
+    &__wrapper {
+      width: 60%;
+      padding: 60px 55px;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .about-us {
+    &__container {
+      padding: 50px;
+    }
+
+    &__block {
+      gap: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .about-us {
+    &__wrapper {
+      gap: 20px;
+      width: 80%;
+      padding: 50px 50px;
+    }
+
+    &__checkbox {
+      margin-top: 21px;
+      margin-bottom: 21px;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .about-us {
+    &__block {
+      align-items: center;
+      @include flex-column;
+    }
+
+    &__img {
+      text-align: center;
+
+      img {
+        width: 80%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-us {
+    &__container {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+    &__wrapper {
+      width: 90%;
+      padding: 25px;
+      gap: 15px;
+    }
+    &__checkbox {
+      margin-top: 11px;
+      margin-bottom: 11px;
+    }
+    &__item {
+      gap: 15px;
+    }
+  }
+}
+
+/* /about-us */
+input::placeholder {
+  color: $colorTen;
+}
+
+[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+}
