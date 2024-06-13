@@ -95,8 +95,8 @@
     }
   }
   &-value {
-    --size: 15px;
-    padding: 10px;
+    --size: 20px;
+    padding: 10px 10px 10px 0;
     display: flex;
     outline: none;
     font-size: calc(var(--size) + 5px);
@@ -113,9 +113,8 @@
 .phone_input {
   display: flex;
   input {
+    --size: 20px;
     width: 80%;
-    --size: 12px;
-    flex: 1 1;
     display: flex;
     outline: none;
     --border-color:  #383838;
@@ -125,5 +124,22 @@
     border-left: 0;
     border-right: 0;
     border-top: 0;
+  }
+}
+@media (max-width: 950px) {
+  .phone_input input {
+    --size: 15px;
+  }
+  .select_box-value {
+    --size: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .phone_input input {
+    --size: 12px;
+  }
+  .select_box-value {
+    --size: 10px;
   }
 }
