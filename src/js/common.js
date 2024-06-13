@@ -35,7 +35,7 @@ function toggleText(index) {
 setTimeout(function() {
   var iframe = document.querySelectorAll('.video__play');
   iframe.forEach((item)=> {
-    let url = item.getAttribute('src') + '?autoplay=1&mute=0&loop=1&playlist=RPCZBBUe474';
+    let url = item.getAttribute('src') + '?autoplay=1&mute=1&loop=1&playlist=RPCZBBUe474';
     item.setAttribute('src', url);
   });
 }, 3000);

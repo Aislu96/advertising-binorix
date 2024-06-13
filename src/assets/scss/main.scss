@@ -1048,7 +1048,7 @@ p {
     background-color: $color;
     padding: 40px 10% 182px;
     @include flex-column;
-    gap: 10px;
+    gap: 40px;
   }
 
   & h1 {
@@ -1156,12 +1156,15 @@ p {
       align-items: center;
       @include flex-column;
     }
+    &__wrapper {
+      width: 90%;
+    }
 
     &__img {
       text-align: center;
 
       & img {
-        width: 80%;
+        width: 90%;
         height: auto;
       }
     }
@@ -1176,7 +1179,6 @@ p {
     }
 
     &__wrapper {
-      width: 90%;
       padding: 25px;
       gap: 15px;
     }
