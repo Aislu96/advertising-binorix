@@ -399,8 +399,8 @@ p {
 /* video */
 .video {
   position: relative;
-  height: 549px;
-  width: 100%;
+  height: 800px;
+  width: 80%;
 
   &__fon {
     display: none;
@@ -469,10 +469,27 @@ p {
   }
 }
 
+@media screen and (max-width: 1680px) {
+  .video {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .video {
+    height: 700px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .video {
+    height: 600px;
+  }
+}
 
 @media screen and (max-width: 900px) {
   .video {
-    height: 400px;
+    height: 500px;
 
     &__fon {
       border-radius: 30px;
@@ -480,10 +497,16 @@ p {
 
   }
 }
-
+@media screen and (max-width: 800px) {
+  .video {
+    &__cross-icon {
+      right: 0;
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   .video {
-    height: 300px;
+    height: 400px;
 
     &__button {
       width: 80px;
@@ -493,14 +516,26 @@ p {
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .video {
-    height: 200px;
+    height: 300px;
 
     &__button {
       width: 60px;
       height: 60px;
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .video {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .video {
+    height: 200px;
   }
 }
 
@@ -995,7 +1030,7 @@ p {
     padding: 13.5px 15.5px;
     @include flex-center;
 
-    span {
+    &-img {
       background-repeat: no-repeat;
       background-size: contain;
       height: 13px;
@@ -1022,7 +1057,9 @@ p {
   }
 }
 
-
+.arrow-active {
+  background-image: url("/assets/img/questions/arrowDown.svg") !important;
+}
 @media screen and (max-width: 900px) {
   .questions {
     &__container {
@@ -1105,6 +1142,7 @@ p {
   }
 
   &__item {
+    overflow: hidden;
     @include flex-column;
     gap: 20px;
     width: 100%;
@@ -1193,15 +1231,18 @@ p {
       padding-right: 16px;
       padding-left: 16px;
     }
+
     &__wrapper {
       width: 90%;
       padding: 25px;
       gap: 15px;
     }
+
     &__checkbox {
       margin-top: 11px;
       margin-bottom: 11px;
     }
+
     &__item {
       gap: 15px;
     }
@@ -1219,7 +1260,7 @@ input::placeholder {
 }
 
 
-@media screen and (max-width: 1200px){
+@media screen and (max-width: 1200px) {
   [type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -1227,7 +1268,7 @@ input::placeholder {
 }
 
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
   [type="checkbox"] {
     width: 15px;
     height: 15px;

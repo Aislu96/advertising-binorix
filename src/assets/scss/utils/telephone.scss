@@ -95,7 +95,7 @@
     }
   }
   &-value {
-    --size: 20px;
+    --size: 15px;
     padding: 10px;
     display: flex;
     outline: none;
@@ -113,10 +113,10 @@
 .phone_input {
   display: flex;
   input {
-    --size: 15px;
+    width: 80%;
+    --size: 12px;
     flex: 1 1;
     display: flex;
-    border-radius: 0 4px 4px 0;
     outline: none;
     --border-color:  #383838;
     font-size: calc(var(--size) + 5px);
