@@ -6,6 +6,7 @@
 @import "utils/_normalize";
 @import "utils/_functions";
 @import "smart-grid";
+@import "utils/telephone";
 
 .index-page {
   color: $color;
@@ -20,6 +21,9 @@
   overflow-x: hidden;
 }
 
+.active {
+  display: flex !important;
+}
 
 /* button */
 
@@ -29,11 +33,15 @@
   justify-content: center;
   gap: 52px;
 
-  span {
-    max-width: 100%; /* Устанавливает максимальную ширину изображения как 100% от родительского элемента */
+  &_container {
+    padding: 40px 9%;
+    background-color: $colorThree;
+  }
+
+  & span {
     width: 295px;
     height: 29.46px;
-    background-image: url("/assets/img/button/Arrow.svg");
+    background-image: url("/assets/img/banner/Arrow.svg");
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -50,6 +58,10 @@
   height: 70px;
   width: 563px;
   @include flex-center;
+
+  &:hover {
+    @include hover;
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -58,20 +70,48 @@
   }
   .group {
     gap: 10px;
+
+    & span {
+      width: 180px;
+    }
+
+    &_container {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
   }
 }
 
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 629px) {
   .button {
     width: 120%;
     height: 45px;
+
+    &_time {
+      width: 70%;
+    }
   }
 
   .group {
-    span {
+    & span {
       margin-top: 20px;
-      width: 180px;
+      width: 100px;
+    }
+
+    &_container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .group {
+    & span {
+      margin-top: 20px;
+      width: 80px;
     }
   }
 }
@@ -110,26 +150,36 @@
 
 /* size */
 
+a {
+  color: #1A1722;
+}
+
+.b1 {
+  font-size: calc(16px + 16 * (100vw - 320px) / 1888);
+  line-height: clamp(19.2px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 38.4px);
+  font-weight: $fontWeightMedium;
+}
 
 .b2 {
-  font-size: calc(48px + 48 * (100vw - 320px) / 1888);
-  line-height: clamp(57.5px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
+  font-size: calc(35px + 61 * (100vw - 320px) / 1888);
+  line-height: clamp(35px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 115px);
   font-weight: $fontWeightBold;
 }
+
 h1 {
   font-size: calc(35px + 35 * (100vw - 320px) / 1888);
   line-height: clamp(42px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 84px);
   font-weight: $fontWeightBold;
-  color: $colorTwo;
+  color: #1a1722;
 }
 
-h2 {
+h2, .b3 {
   font-size: calc(28px + 28 * (100vw - 320px) / 1888);
   line-height: clamp(33.6px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 67.2px);
   font-weight: $fontWeightSemiBold;
 }
 
-h3 {
+h3, .b4 {
   font-size: calc(22px + 22 * (100vw - 320px) / 1888);
   line-height: clamp(26.4px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 52.8px);
   font-weight: $fontWeightSemiBold;
@@ -141,10 +191,10 @@ h3 {
   font-weight: $fontWeightSemiBold;
 }
 
-.b1 {
-  font-size: calc(16px + 16 * (100vw - 320px) / 1888);
-  line-height: clamp(19.2px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 38.4px);
+.s1 {
   font-weight: $fontWeightMedium;
+  font-size: calc(40px + 60 * (100vw - 320px) / 1888);
+  line-height: clamp(40px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 120px);
 }
 
 p {
@@ -153,12 +203,153 @@ p {
   font-weight: $fontWeightMedium;
 }
 
+.p2 {
+  font-size: calc(10px + 12 * (100vw - 320px) / 1888);
+  line-height: clamp(8px, calc(1.5em + 0.3 * (100vw - 320px) / 1680), 20px);
+  font-weight: $fontWeightMedium;
+}
+
 
 /* /size */
 
 
+/* header */
+.header {
+  &__container {
+    background-color: $color;
+    color: $colorThree;
+    padding: 38px 14% 30px;
+    @include flex-row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__group {
+    align-items: center;
+    @include flex-row;
+    gap: 24px;
+
+    & a {
+      color: $colorThree;
+      text-transform: uppercase;
+      padding: 10px;
+      border: 1px solid $colorFive;
+      background-color: $colorSix;
+
+      &:hover {
+        @include hover;
+      }
+    }
+  }
+
+  & h4 {
+    color: $colorTwo;
+  }
+
+  &__time {
+    @include flex-row;
+    align-items: center;
+    gap: 16px;
+
+    & span {
+      @include flex-center;
+      width: 44px;
+      height: 58px;
+      border: 1px solid $colorFive;
+      background-color: $colorSix;
+    }
+
+    & div {
+      @include flex-row;
+      gap: 6px;
+    }
+  }
+
+  &__block {
+    @include flex-row;
+    gap: 24px;
+    align-items: center;
+    @include flex-row;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .header {
+    &__container {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1256px) {
+  .header {
+    &__container {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .header {
+    &__container {
+      @include flex-column;
+      gap: 20px;
+    }
+
+    &__time {
+      & span {
+        width: 35px;
+        height: 48px;
+      }
+
+      & div {
+        @include flex-row;
+        gap: 6px;
+      }
+    }
+
+    & p {
+      text-align: center;
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .header {
+    &__container {
+      padding: 25px 16px;
+    }
+
+    &__time {
+      & span {
+        width: 35px;
+        height: 48px;
+      }
+
+      & div {
+        @include flex-row;
+        gap: 6px;
+      }
+    }
+
+    &__group {
+      width: 100%;
+      justify-content: space-around;
+      gap: 0;
+    }
+  }
+}
+
+/*/header */
+
 /*banner */
 .banner {
+  overflow: hidden;
+
   &__container {
     position: relative;
     padding: 64px 9%;
@@ -167,44 +358,115 @@ p {
     justify-content: center;
     align-items: center;
   }
-  h1 {
+
+  & h1 {
     color: $color;
     text-align: center;
   }
-  span {
-    background-color: $colorThree;
-    border-radius: 50px;
-  }
-  p {
+
+  & p {
     text-align: center;
     width: 49%;
-    margin-bottom: 32px;
   }
+
   &__fon {
     position: absolute;
     background-color: $colorFour;
     top: 0;
     left: 0;
     width: 100%;
-    height: 839px;
+    height: 60%;
     z-index: -1;
   }
 }
-/* /banner */
 
+
+@media screen and (max-width: 900px) {
+  .banner {
+    &__fon {
+      height: 55%;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .banner {
+    &__container {
+      padding: 34px 20px;
+    }
+
+    & p {
+      width: 90%;
+    }
+  }
+}
+
+/* /banner */
 
 
 /* video */
 .video {
-  height: 549px;
-  width: 62%;
-  &__fon {
-    background-color: $color;
-    border-radius: 50px;
+  position: relative;
+  height: 750px;
+  width: 80%;
+
+
+  &__play {
     height: 100%;
+    width: 100%;
+    border-radius: 50px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .video {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 1280px) {
+  .video {
+    height: 700px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .video {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .video {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .video {
+    height: 400px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .video {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .video {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .video {
+    height: 200px;
+  }
+}
+
 /* /video */
 
 /* stud */
@@ -213,16 +475,19 @@ p {
     padding: 80px 10%;
     @include flex-column;
     gap: 64px;
-    h1 {
+
+    & h1 {
       color: $color;
     }
   }
+
   &__group {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 46px;
   }
-  img {
+
+  & img {
     object-fit: contain;
   }
 }
@@ -232,6 +497,7 @@ p {
     &__container {
       gap: 44px;
     }
+
     &__group {
       gap: 26px;
     }
@@ -244,6 +510,7 @@ p {
       padding: 40px 50px;
       gap: 24px;
     }
+
     &__group {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
@@ -263,11 +530,12 @@ p {
 
 @media screen and (max-width: 360px) {
   .stud {
-    h1 {
+    & h1 {
       font-size: 30px;
     }
   }
 }
+
 /* /stud */
 
 /* learn */
@@ -289,12 +557,13 @@ p {
     @include flex-row;
     gap: 100px;
     padding: 44px;
-    &:nth-child(2) {
+
+    &:nth-child(2n) {
       flex-direction: row-reverse !important;
     }
   }
 
-  img {
+  & img {
     object-fit: contain;
     width: 480px;
   }
@@ -302,15 +571,20 @@ p {
   &__item {
     @include flex-column;
     gap: 24px;
+
+    & a:hover {
+      @include hover;
+    }
   }
-  p {
+
+  & p {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 1400px) {
   .learn {
-    img {
+    & img {
       width: 300px;
     }
   }
@@ -331,13 +605,16 @@ p {
     &__container {
       gap: 56px;
     }
+
     &__group {
       @include flex-column;
       gap: 50px;
-      &:nth-child(2) {
+
+      &:nth-child(2n) {
         flex-direction: column !important;
       }
     }
+
     &__items {
       gap: 56px;
     }
@@ -352,15 +629,18 @@ p {
       padding-left: 20px;
       gap: 26px;
     }
+
     &__group {
       padding: 20px;
       gap: 20px;
     }
+
     &__items {
       gap: 26px;
     }
   }
 }
+
 /* /learn */
 
 /*call */
@@ -372,7 +652,9 @@ p {
     padding: 100px 9%;
     gap: 40px;
     @include flex-column;
-    h1 {
+
+    & h1 {
+      color: $colorTwo;
       text-align: center;
     }
   }
@@ -390,9 +672,13 @@ p {
     gap: 32px;
     padding: 32px;
     border-radius: 32px;
+
+    & a:hover {
+      @include hover;
+    }
   }
 
-  img {
+  & img {
     object-fit: contain;
     width: 100%;
   }
@@ -449,7 +735,7 @@ p {
       padding: 16px;
     }
 
-    img {
+    & img {
       height: 140px;
     }
   }
@@ -462,7 +748,7 @@ p {
   background: #DAD9DD;
   border-radius: 100px 100px 0 0;
 
-  h2 {
+  & h2 {
     margin-bottom: 76px;
   }
 
@@ -474,18 +760,496 @@ p {
 
 @media screen and (max-width: 900px) {
   .footer {
-    border-radius: 75px 75px 0 0;
+    border-radius: 50px 50px 0 0;
   }
 }
 
 @media screen and (max-width: 500px) {
   .footer {
-    border-radius: 50px 50px 0 0;
+    border-radius: 25px 25px 0 0;
 
-    h2 {
+    & h2 {
       margin-bottom: 38px;
     }
   }
 }
 
 /* /footer */
+
+
+/* time */
+.time {
+  &__container {
+    padding: 84px 11% 120px;
+    @include flex-row;
+    gap: 74px;
+  }
+
+  &__img {
+    & img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__block {
+    width: 50%;
+
+    & h1 {
+      margin-bottom: 23px;
+    }
+
+    & p {
+      margin-bottom: 79px;
+    }
+  }
+
+  &__group {
+    @include flex-row;
+    gap: 16px;
+    margin-bottom: 79px;
+
+    & span {
+      background-color: $color;
+      color: $colorTwo;
+      width: 130px;
+      height: 171px;
+      @include flex-center;
+    }
+
+    & div {
+      @include flex-row;
+      gap: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .time {
+    &__container {
+      padding: 50px;
+      gap: 50px;
+    }
+
+    &__block {
+      width: 80%;
+
+      & p {
+        margin-bottom: 49px;
+      }
+    }
+
+    &__group {
+      margin-bottom: 49px;
+
+      & span {
+        width: 100px;
+        height: 120px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .time {
+    &__container {
+      gap: 30px;
+    }
+
+    &__group {
+      margin-bottom: 29px;
+
+      & span {
+        width: 80px;
+        height: 90px;
+      }
+    }
+
+    &__block {
+      width: 60%;
+
+      & p {
+        margin-bottom: 29px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 813px) {
+  .time {
+    &__container {
+      @include flex-column;
+    }
+
+    &__block {
+      width: 100%;
+    }
+
+    &__img {
+      text-align: center;
+
+      & img {
+        width: 80%;
+        height: auto;
+      }
+    }
+
+    &__group {
+      & span {
+        width: 60px;
+        height: 70px;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .time {
+    &__container {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    &__group {
+      & span {
+        width: 55px;
+        height: 65px;
+      }
+    }
+
+    &__img {
+      & img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* /time */
+
+
+/* questions */
+.questions {
+  &__container {
+    padding: 138px 9.5%;
+    @include flex-column;
+    gap: 56px;
+  }
+
+  & h1 {
+    color: $color;
+  }
+
+  &__blocks {
+    @include flex-column;
+  }
+
+  &__block {
+    @include flex-column;
+  }
+
+  &__group {
+    @include flex-row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px;
+    border-bottom: 1px solid $colorSeven;
+
+    &:hover {
+      @include hover;
+    }
+  }
+
+  &__arrow {
+    padding: 13.5px 15.5px;
+    @include flex-center;
+
+    &-img {
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 13px;
+      width: 26px;
+      background-image: url("/assets/img/questions/arrowUp.svg");
+    }
+  }
+
+  &__body {
+    display: none;
+    flex-direction: row;
+    background-color: $colorEight;
+    border-bottom: 1px solid $colorSeven;
+    align-items: center;
+    gap: 44px;
+    padding: 52px 26px 52px 16px;
+  }
+
+  &__img {
+    & img {
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.arrow-active {
+  background-image: url("/assets/img/questions/arrowDown.svg") !important;
+}
+
+@media screen and (max-width: 900px) {
+  .questions {
+    &__container {
+      padding: 100px 50px;
+      gap: 36px;
+    }
+
+    &__group {
+      padding: 20px;
+    }
+
+    &__arrow {
+      & span {
+        height: 10px;
+        width: 20px;
+      }
+    }
+
+    &__body {
+      gap: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .questions {
+    &__container {
+      padding: 50px 16px;
+      gap: 20px;
+    }
+
+    &__arrow {
+      & span {
+        height: 8px;
+        width: 15px;
+      }
+    }
+  }
+}
+
+/* /questions */
+
+
+/* about-us */
+.about-us {
+  &__container {
+    background-color: $color;
+    padding: 40px 10% 182px;
+    @include flex-column;
+    gap: 40px;
+  }
+
+  & h1 {
+    color: $colorThree;
+  }
+
+  &__block {
+    @include flex-row;
+    align-items: center;
+    gap: 147px;
+  }
+
+  &__img {
+    width: auto;
+    height: 100%;
+    & img {
+      border-radius: 20px;
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    @include flex-column;
+    gap: 39px;
+    padding: 140px 64px;
+    background-color: $colorThree;
+    width: 70%;
+    border-radius: 20px;
+  }
+
+  &__item {
+    overflow: hidden;
+    @include flex-column;
+    gap: 20px;
+    width: 100%;
+
+    input {
+      padding: 10px;
+      border-bottom: 1px solid $colorNine;
+    }
+  }
+
+  &__checkbox {
+    margin-top: 41px;
+    margin-bottom: 41px;
+    @include flex-row;
+    gap: 39px;
+
+    & a {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 1680px) {
+  .about-us {
+    &__block {
+      gap: 100px;
+    }
+
+    &__wrapper {
+      width: 60%;
+      padding: 60px 55px;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .about-us {
+    &__container {
+      padding: 50px;
+    }
+
+    &__block {
+      gap: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .about-us {
+    &__wrapper {
+      gap: 20px;
+      width: 80%;
+      padding: 50px 50px;
+    }
+
+    &__checkbox {
+      margin-top: 21px;
+      margin-bottom: 21px;
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .about-us {
+    &__block {
+      align-items: center;
+      @include flex-column;
+    }
+    &__wrapper {
+      width: 90%;
+    }
+
+    &__img {
+      text-align: center;
+
+      & img {
+        width: 90%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-us {
+    &__container {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    &__wrapper {
+      padding: 25px;
+      gap: 15px;
+    }
+
+    &__checkbox {
+      gap: 20px;
+      margin-top: 11px;
+      margin-bottom: 11px;
+    }
+
+    &__item {
+      gap: 15px;
+    }
+  }
+}
+
+/* /about-us */
+input::placeholder {
+  color: $colorTen;
+}
+
+[type="checkbox"] {
+  width: 26px;
+  height: 26px;
+}
+
+
+@media screen and (max-width: 1200px) {
+  [type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  [type="checkbox"] {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.buttons {
+  @include flex-row;
+  gap: 20px;
+
+  & a:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  & img {
+    background-color: #8C9EFF;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    padding: 10px;
+    object-fit: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .buttons {
+    gap: 10px;
+
+    & img {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+    }
+  }
+}
