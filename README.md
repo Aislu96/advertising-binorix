@@ -1,5 +1,7 @@
 # Готовая сборка webpack с шаблонизатором PUG
 
+* [Сайт](https://aislu96.github.io/advertising-binorix/)
+
 В ней есть оптимизация и минимизация:
 
 1. JavaScript (babel)
